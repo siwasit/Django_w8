@@ -1,0 +1,47 @@
+<!-- In your product_detail.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail</title>
+    <style>
+        /* Add your styles here */
+        .product-detail {
+            width: 80%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: black;
+        }
+        .product-info {
+            font-size: 16px;
+            color: #555;
+        }
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="product-detail">
+        <h1>{{ product.name }}</h1>
+        <!-- Use Lorem Picsum to fetch a random image with a specific size -->
+        <img src="https://picsum.photos/500/300?random={{ product.id }}" alt="Product Image">
+        <p class="product-info"><strong>Description:</strong> {{ product.description }}</p>
+        <p class="product-info"><strong>Price:</strong> ${{ product.price }}</p>
+        <p class="product-info"><strong>Total Amount:</strong> {{ product.product_amount }}</p>
+        <p class="product-info"><strong>Total Buy:</strong> {{ product.total_buy }}</p>
+        <p class="product-info"><strong>Created At:</strong> {{ product.created_at|date:"Y-m-d H:i" }}</p>
+    </div>
+
+</body>
+</html>
