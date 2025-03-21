@@ -11,6 +11,17 @@ def user_list(request):
     serializer = UserSerializer(users, many=True)  # Serialize data
     return Response(serializer.data)  # Return JSON response
 
+
+@api_view(['GET'])
+def user_individual(request, username):
+    try:
+        # Retrieve the user by user_id
+        user = User.objects.get(username=username)
+        serializer = UserSerializer(user)  # Serialize data for a single user
+        return Response(serializer.data)  # Return JSON response
+    except User.DoesNotExist:
+        return Response({"detail": "User not found."}, status=404)  # Handle user not found
+
 def product_list(request):
     products = Product.objects.all()  # Get all products
     return render(request, 'product_list.html', {'products': products})
